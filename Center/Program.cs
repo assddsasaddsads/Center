@@ -8,6 +8,7 @@ namespace Center
 {
     static class Program
     {
+        public static WFCenterEntities1 WFCZN = new WFCenterEntities1();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -16,7 +17,7 @@ namespace Center
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormAuthorization());
         }
     }
 }

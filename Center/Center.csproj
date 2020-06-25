@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,16 +55,115 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankSet.cs">
+      <DependentUpon>ModelWFCZ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployerSet.cs">
+      <DependentUpon>ModelWFCZ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAuthorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAuthorization.Designer.cs">
+      <DependentUpon>FormAuthorization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBank.Designer.cs">
+      <DependentUpon>FormBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmployer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmployer.Designer.cs">
+      <DependentUpon>FormEmployer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormJobless.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormJobless.Designer.cs">
+      <DependentUpon>FormJobless.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMagazine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMagazine.Designer.cs">
+      <DependentUpon>FormMagazine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReception.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReception.Designer.cs">
+      <DependentUpon>FormReception.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStaff.Designer.cs">
+      <DependentUpon>FormStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JoblessSet.cs">
+      <DependentUpon>ModelWFCZ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MagazineSet.cs">
+      <DependentUpon>ModelWFCZ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelWFCZ.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelWFCZ.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelWFCZ.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelWFCZ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelWFCZ.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelWFCZ.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceptionSet.cs">
+      <DependentUpon>ModelWFCZ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaffSet.cs">
+      <DependentUpon>ModelWFCZ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>ModelWFCZ.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAuthorization.resx">
+      <DependentUpon>FormAuthorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBank.resx">
+      <DependentUpon>FormBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmployer.resx">
+      <DependentUpon>FormEmployer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormJobless.resx">
+      <DependentUpon>FormJobless.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMagazine.resx">
+      <DependentUpon>FormMagazine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReception.resx">
+      <DependentUpon>FormReception.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStaff.resx">
+      <DependentUpon>FormStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +173,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EntityDeploy Include="ModelWFCZ.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelWFCZ.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelWFCZ.edmx.diagram">
+      <DependentUpon>ModelWFCZ.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +195,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7fb6f2ac83a059f53cbbc0e7b29c225d1.png" />
+    <None Include="Resources\7fb6f2ac83a059f53cbbc0e7b29c225d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelWFCZ.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelWFCZ.edmx</DependentUpon>
+      <LastGenOutput>ModelWFCZ.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelWFCZ.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelWFCZ.edmx</DependentUpon>
+      <LastGenOutput>ModelWFCZ.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\Без имени-1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

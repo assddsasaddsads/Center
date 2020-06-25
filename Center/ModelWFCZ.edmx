@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище WFCenterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BankSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Job" Type="nvarchar(max)" />
+          <Property Name="Need" Type="nvarchar(max)" />
+          <Property Name="Income" Type="nvarchar(max)" />
+          <Property Name="Arranget" Type="nvarchar(max)" />
+          <Property Name="IdEmployer" Type="int" Nullable="false" />
+          <Property Name="IdStaff" Type="int" Nullable="false" />
+          <Property Name="Selection" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EmployerSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="JoblessSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MagazineSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="IdJobless" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ReceptionSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="Date" Type="nvarchar(max)" />
+          <Property Name="IdJobless" Type="int" Nullable="false" />
+          <Property Name="IdStaff" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Position" Type="nvarchar(max)" />
+          <Property Name="Department" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BankSet_EmployerSet">
+          <End Role="EmployerSet" Type="Self.EmployerSet" Multiplicity="1" />
+          <End Role="BankSet" Type="Self.BankSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployerSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankSet">
+              <PropertyRef Name="IdEmployer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BankSet_StaffSet">
+          <End Role="StaffSet" Type="Self.StaffSet" Multiplicity="1" />
+          <End Role="BankSet" Type="Self.BankSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankSet">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MagazineSet_JoblessSet">
+          <End Role="JoblessSet" Type="Self.JoblessSet" Multiplicity="1" />
+          <End Role="MagazineSet" Type="Self.MagazineSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JoblessSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MagazineSet">
+              <PropertyRef Name="IdJobless" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceptionSet_JoblessSet">
+          <End Role="JoblessSet" Type="Self.JoblessSet" Multiplicity="1" />
+          <End Role="ReceptionSet" Type="Self.ReceptionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JoblessSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionSet">
+              <PropertyRef Name="IdJobless" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceptionSet_StaffSet">
+          <End Role="StaffSet" Type="Self.StaffSet" Multiplicity="1" />
+          <End Role="ReceptionSet" Type="Self.ReceptionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionSet">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище WFCenterModelContainer">
+          <EntitySet Name="BankSet" EntityType="Self.BankSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployerSet" EntityType="Self.EmployerSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JoblessSet" EntityType="Self.JoblessSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MagazineSet" EntityType="Self.MagazineSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceptionSet" EntityType="Self.ReceptionSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffSet" EntityType="Self.StaffSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BankSet_EmployerSet" Association="Self.FK_BankSet_EmployerSet">
+            <End Role="EmployerSet" EntitySet="EmployerSet" />
+            <End Role="BankSet" EntitySet="BankSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BankSet_StaffSet" Association="Self.FK_BankSet_StaffSet">
+            <End Role="StaffSet" EntitySet="StaffSet" />
+            <End Role="BankSet" EntitySet="BankSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MagazineSet_JoblessSet" Association="Self.FK_MagazineSet_JoblessSet">
+            <End Role="JoblessSet" EntitySet="JoblessSet" />
+            <End Role="MagazineSet" EntitySet="MagazineSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceptionSet_JoblessSet" Association="Self.FK_ReceptionSet_JoblessSet">
+            <End Role="JoblessSet" EntitySet="JoblessSet" />
+            <End Role="ReceptionSet" EntitySet="ReceptionSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceptionSet_StaffSet" Association="Self.FK_ReceptionSet_StaffSet">
+            <End Role="StaffSet" EntitySet="StaffSet" />
+            <End Role="ReceptionSet" EntitySet="ReceptionSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WFCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BankSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Need" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Income" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Arranget" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdEmployer" Type="Int32" Nullable="false" />
+          <Property Name="IdStaff" Type="Int32" Nullable="false" />
+          <Property Name="Selection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployerSet" Relationship="Self.FK_BankSet_EmployerSet" FromRole="BankSet" ToRole="EmployerSet" />
+          <NavigationProperty Name="StaffSet" Relationship="Self.FK_BankSet_StaffSet" FromRole="BankSet" ToRole="StaffSet" />
+        </EntityType>
+        <EntityType Name="EmployerSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BankSet" Relationship="Self.FK_BankSet_EmployerSet" FromRole="EmployerSet" ToRole="BankSet" />
+        </EntityType>
+        <EntityType Name="JoblessSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MagazineSet" Relationship="Self.FK_MagazineSet_JoblessSet" FromRole="JoblessSet" ToRole="MagazineSet" />
+          <NavigationProperty Name="ReceptionSet" Relationship="Self.FK_ReceptionSet_JoblessSet" FromRole="JoblessSet" ToRole="ReceptionSet" />
+        </EntityType>
+        <EntityType Name="MagazineSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdJobless" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="JoblessSet" Relationship="Self.FK_MagazineSet_JoblessSet" FromRole="MagazineSet" ToRole="JoblessSet" />
+        </EntityType>
+        <EntityType Name="ReceptionSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdJobless" Type="Int32" Nullable="false" />
+          <Property Name="IdStaff" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="JoblessSet" Relationship="Self.FK_ReceptionSet_JoblessSet" FromRole="ReceptionSet" ToRole="JoblessSet" />
+          <NavigationProperty Name="StaffSet" Relationship="Self.FK_ReceptionSet_StaffSet" FromRole="ReceptionSet" ToRole="StaffSet" />
+        </EntityType>
+        <EntityType Name="StaffSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BankSet" Relationship="Self.FK_BankSet_StaffSet" FromRole="StaffSet" ToRole="BankSet" />
+          <NavigationProperty Name="ReceptionSet" Relationship="Self.FK_ReceptionSet_StaffSet" FromRole="StaffSet" ToRole="ReceptionSet" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BankSet_EmployerSet">
+          <End Role="EmployerSet" Type="Self.EmployerSet" Multiplicity="1" />
+          <End Role="BankSet" Type="Self.BankSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployerSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankSet">
+              <PropertyRef Name="IdEmployer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BankSet_StaffSet">
+          <End Role="StaffSet" Type="Self.StaffSet" Multiplicity="1" />
+          <End Role="BankSet" Type="Self.BankSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankSet">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MagazineSet_JoblessSet">
+          <End Role="JoblessSet" Type="Self.JoblessSet" Multiplicity="1" />
+          <End Role="MagazineSet" Type="Self.MagazineSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JoblessSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MagazineSet">
+              <PropertyRef Name="IdJobless" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceptionSet_JoblessSet">
+          <End Role="JoblessSet" Type="Self.JoblessSet" Multiplicity="1" />
+          <End Role="ReceptionSet" Type="Self.ReceptionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JoblessSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionSet">
+              <PropertyRef Name="IdJobless" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceptionSet_StaffSet">
+          <End Role="StaffSet" Type="Self.StaffSet" Multiplicity="1" />
+          <End Role="ReceptionSet" Type="Self.ReceptionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceptionSet">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WFCenterEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BankSet" EntityType="Self.BankSet" />
+          <EntitySet Name="EmployerSet" EntityType="Self.EmployerSet" />
+          <EntitySet Name="JoblessSet" EntityType="Self.JoblessSet" />
+          <EntitySet Name="MagazineSet" EntityType="Self.MagazineSet" />
+          <EntitySet Name="ReceptionSet" EntityType="Self.ReceptionSet" />
+          <EntitySet Name="StaffSet" EntityType="Self.StaffSet" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_BankSet_EmployerSet" Association="Self.FK_BankSet_EmployerSet">
+            <End Role="EmployerSet" EntitySet="EmployerSet" />
+            <End Role="BankSet" EntitySet="BankSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BankSet_StaffSet" Association="Self.FK_BankSet_StaffSet">
+            <End Role="StaffSet" EntitySet="StaffSet" />
+            <End Role="BankSet" EntitySet="BankSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MagazineSet_JoblessSet" Association="Self.FK_MagazineSet_JoblessSet">
+            <End Role="JoblessSet" EntitySet="JoblessSet" />
+            <End Role="MagazineSet" EntitySet="MagazineSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceptionSet_JoblessSet" Association="Self.FK_ReceptionSet_JoblessSet">
+            <End Role="JoblessSet" EntitySet="JoblessSet" />
+            <End Role="ReceptionSet" EntitySet="ReceptionSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceptionSet_StaffSet" Association="Self.FK_ReceptionSet_StaffSet">
+            <End Role="StaffSet" EntitySet="StaffSet" />
+            <End Role="ReceptionSet" EntitySet="ReceptionSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище WFCenterModelContainer" CdmEntityContainer="WFCenterEntities1">
+          <EntitySetMapping Name="BankSet">
+            <EntityTypeMapping TypeName="WFCenterModel.BankSet">
+              <MappingFragment StoreEntitySet="BankSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Need" ColumnName="Need" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Arranget" ColumnName="Arranget" />
+                <ScalarProperty Name="IdEmployer" ColumnName="IdEmployer" />
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+                <ScalarProperty Name="Selection" ColumnName="Selection" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployerSet">
+            <EntityTypeMapping TypeName="WFCenterModel.EmployerSet">
+              <MappingFragment StoreEntitySet="EmployerSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JoblessSet">
+            <EntityTypeMapping TypeName="WFCenterModel.JoblessSet">
+              <MappingFragment StoreEntitySet="JoblessSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MagazineSet">
+            <EntityTypeMapping TypeName="WFCenterModel.MagazineSet">
+              <MappingFragment StoreEntitySet="MagazineSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="IdJobless" ColumnName="IdJobless" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceptionSet">
+            <EntityTypeMapping TypeName="WFCenterModel.ReceptionSet">
+              <MappingFragment StoreEntitySet="ReceptionSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdJobless" ColumnName="IdJobless" />
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffSet">
+            <EntityTypeMapping TypeName="WFCenterModel.StaffSet">
+              <MappingFragment StoreEntitySet="StaffSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WFCenterModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
