@@ -63,5 +63,16 @@ namespace Center
                 }
             }
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonReg_Click(object sender, EventArgs e)
+        {
+            Form formReg = new FormReg();
+            formReg.Show();
+        }
     }
 }

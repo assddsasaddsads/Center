@@ -103,6 +103,12 @@
     <Compile Include="FormReception.Designer.cs">
       <DependentUpon>FormReception.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReg.Designer.cs">
+      <DependentUpon>FormReg.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStaff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     <EmbeddedResource Include="FormReception.resx">
       <DependentUpon>FormReception.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReg.resx">
+      <DependentUpon>FormReg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStaff.resx">
       <DependentUpon>FormStaff.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +213,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Без имени-1.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelWFCZ.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelWFCZ.edmx</DependentUpon>
@@ -214,7 +226,6 @@
       <DependentUpon>ModelWFCZ.edmx</DependentUpon>
       <LastGenOutput>ModelWFCZ.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\Без имени-1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

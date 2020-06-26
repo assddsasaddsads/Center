@@ -36,6 +36,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonReg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +93,7 @@
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // label3
             // 
@@ -106,18 +108,30 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Center.Properties.Resources.Без_имени_1;
-            this.pictureBox1.Location = new System.Drawing.Point(-9, 162);
+            this.pictureBox1.Location = new System.Drawing.Point(-9, 183);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(322, 84);
+            this.pictureBox1.Size = new System.Drawing.Size(322, 63);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            // 
+            // buttonReg
+            // 
+            this.buttonReg.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonReg.Location = new System.Drawing.Point(62, 148);
+            this.buttonReg.Name = "buttonReg";
+            this.buttonReg.Size = new System.Drawing.Size(169, 29);
+            this.buttonReg.TabIndex = 8;
+            this.buttonReg.Text = "Зарегистрироваться";
+            this.buttonReg.UseVisualStyleBackColor = true;
+            this.buttonReg.Click += new System.EventHandler(this.buttonReg_Click);
             // 
             // FormAuthorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(305, 252);
+            this.Controls.Add(this.buttonReg);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonCancel);
@@ -146,5 +160,6 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonReg;
     }
 }
